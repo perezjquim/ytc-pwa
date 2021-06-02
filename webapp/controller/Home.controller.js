@@ -52,11 +52,15 @@ sap.ui.define([
 				fetch(`${this.API_BASE_URL}/${this._sEndpoint}`, {
 					method: "POST",
 					body: sBody
-				}).then(() => {
-					const sText = this.getText("action_success");
-					this.toast(sText);
-
-					this._oPromptDialog.close();
+				}).then((response) => {
+					if (oResponse.ok) {
+						const sText = this.getText("action_success");
+						this.toast(sText);
+						this._oPromptDialog.close();
+					} else {
+						const sText = this.getText("action_error");
+						this.toast(sText);
+					}
 				}).catch(() => {
 					const sText = this.getText("action_error");
 					this.toast(sText);
