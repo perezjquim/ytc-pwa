@@ -52,6 +52,9 @@ sap.ui.define([
 			} else {
 				this.navTo("Home", true);
 			}
+		},
+		getStorage: function() {
+			return jQuery.sap.storage(jQuery.sap.storage.Type.local);
 		}
 	});
 });

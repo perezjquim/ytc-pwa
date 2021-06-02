@@ -71,13 +71,11 @@ sap.ui.define([
 		},
 
 		_reloadConfig: function() {
-			const sConfig = Storage.get("config");
-			if (sConfig) {
-				const oConfig = JSON.parse(sConfig);
-				if (oConfig) {
-					const oModel = this.getModel("config");
-					oModel.setData(oConfig);
-				}
+			const oStorage = this.getStorage();
+			const oConfig = oStorage.get("config");
+			if (oConfig) {
+				const oModel = this.getModel("config");
+				oModel.setData(oConfig);
 			}
 		}
 
