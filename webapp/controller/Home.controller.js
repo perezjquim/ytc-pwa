@@ -34,18 +34,20 @@ sap.ui.define([
 		},
 
 		onConfirmAction: function() {
+			this.setBusy(true);
+
 			const oConfigModel = this.getModel("config");
 			const oConfigData = oConfigModel.getData();
 
 			const oPromptModel = this.getModel("prompt");
 			const oPromptData = oConfigModel.getData();
 
-			if (oConfigData && oPromptData) {
+			const oBody = { ...oConfigData,
+				...oPromptData
+			};
+			const sBody = JSON.stringify(oBody);
 
-				const oBody = { ...oConfigData,
-					...oPromptData
-				};
-				const sBody = JSON.stringify(oBody);
+			if (oConfigData && oPromptData && sBody) {
 
 				fetch(`${this.API_BASE_URL}/${this._sEndpoint}`, {
 					method: "POST",
@@ -53,15 +55,13 @@ sap.ui.define([
 				}).then(() => {
 					const sText = this.getText("action_success");
 					this.toast(sText);
+
+					this._oPromptDialog.close();
 				}).catch(() => {
 					const sText = this.getText("action_error");
 					this.toast(sText);
 				}).finally(() => {
 					this.setBusy(false);
-
-					const oButton = oEvent.getSource();
-					const oDialog = oButton.getParent();
-					oDialog.close();
 				});
 
 			} else {
