@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#qua jun  2 21:50:54 WEST 2021
+#qua jun  2 22:02:34 WEST 2021
 
 manifest.json
 i18n/i18n.properties
@@ -11,6 +11,7 @@ view/fragment/ActionPrompt.fragment.xml
 view/Home.view.xml
 view/App.view.xml
 model/navigation.json
+model/dummy.json
 controller/Config.controller.js
 controller/util/BaseController.js
 controller/Home.controller.js
