@@ -63,7 +63,7 @@ sap.ui.define([
 						this.toast(sText);
 						oApplicationCache.swapCache();
 						setTimeout(() => {
-							window.location.reload();
+							window.location.reload(true);
 						}, 2000);
 					} else {}
 				}, false);
