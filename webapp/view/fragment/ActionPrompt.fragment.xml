@@ -10,7 +10,8 @@
 		                <Label 
 		                    text="{i18n>pw}"/>
 		                <Input
-		                    value="{prompt>/pw}"/>                       
+		                    value="{prompt>/pw}"
+		                    type="Password"/>                       
 		            </f:content>
 		        </f:SimpleForm>        
 		</content>
