@@ -13,8 +13,6 @@
             	menuButtonPressed="onMenuButtonPress" 
                 showNavButton="true"
                 navButtonPressed="onNavButtonPress"
-                showProductSwitcher="true"
-                productSwitcherPressed="onProductSwitcherPress"
             	title="{i18n>appTitle}"/>
         </tnt:header>
         <tnt:sideContent>

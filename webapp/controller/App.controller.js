@@ -32,9 +32,6 @@ sap.ui.define([
 		},
 		onNavButtonPress: function(oEvent) {
 			this.navBack();
-		},
-		onProductSwitcherPress: function(oEvent) {
-
 		}
 	});
 });

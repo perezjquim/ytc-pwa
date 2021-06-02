@@ -11,12 +11,8 @@
                 <Label 
                     text="{i18n>iguser}" />
                 <Input
-                    value="{config>/iguser}"/>            
-                <Label 
-                    text="{i18n>igpw}" />
-                <Input
-                    value="{config>/igpw}"
-                    type="Password"/>                                
+                    value="{config>/iguser}"
+                    liveChange="onConfigChange"/>                       
             </f:content>
         </f:SimpleForm>        
     </Page>

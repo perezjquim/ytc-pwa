@@ -62,6 +62,9 @@
 			"config": {
 				"type": "sap.ui.model.json.JSONModel"
 			},
+			"prompt": {
+				"type": "sap.ui.model.json.JSONModel"
+			},
 			"navigation": {
 				"type": "sap.ui.model.json.JSONModel",
 				"uri": "model/navigation.json"

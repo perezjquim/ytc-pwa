@@ -1,11 +1,12 @@
 CACHE MANIFEST
-#qua jun  2 19:46:37 WEST 2021
+#qua jun  2 21:34:06 WEST 2021
 
 manifest.json
 i18n/i18n.properties
 index.html
 images/icon.png
 view/Config.view.xml
+view/fragment/ActionPrompt.fragment.xml
 view/Home.view.xml
 view/App.view.xml
 model/navigation.json
