@@ -40,7 +40,7 @@ sap.ui.define([
 			const oConfigData = oConfigModel.getData();
 
 			const oPromptModel = this.getModel("prompt");
-			const oPromptData = oConfigModel.getData();
+			const oPromptData = oPromptModel.getData();
 
 			const oBody = { ...oConfigData,
 				...oPromptData
