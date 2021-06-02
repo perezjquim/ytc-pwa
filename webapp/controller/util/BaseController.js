@@ -55,6 +55,14 @@ sap.ui.define([
 		},
 		getStorage: function() {
 			return window.localStorage;
+		},
+		clearModel: function(sName) {
+			const oModel = this.getModel(sName);
+			const oData = oModel.getData();
+			for (var sKey in oData) {
+				oData[sKey] = "";
+			}
+			oModel.setData(oData);
 		}
 	});
 });

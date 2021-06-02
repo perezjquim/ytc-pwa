@@ -82,17 +82,13 @@ sap.ui.define([
 			oDialog.close();
 		},
 
-		onAfterOpenPromptDialog: function(oEvent) {
-			this._clearPromptData();
-		},
-
 		onBeforeOpenPromptDialog: function(oEvent) {
-			this._clearPromptData();
+			this.clearModel("prompt");
 		},
 
-		_clearPromptData: function() {
-			const oPromptModel = this.getModel("prompt");
-			oPromptModel.setData();
+		onAfterClosePromptDialog: function(oEvent) {
+			this.clearModel("prompt");
 		}
+
 	});
 });

@@ -12,7 +12,7 @@
                     text="{i18n>user}" />
                 <Input
                     value="{config>/user}"
-                    liveChange="onConfigChange"/>                       
+                    change="onConfigChange"/>                       
             </f:content>
         </f:SimpleForm>        
     </Page>
