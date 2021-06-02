@@ -8,9 +8,9 @@
 		            editable="true">
 		            <f:content>
 		                <Label 
-		                    text="{i18n>igpass}" />
+		                    text="{i18n>pw}"/>
 		                <Input
-		                    value="{prompt>/igpass}"/>                       
+		                    value="{prompt>/pw}"/>                       
 		            </f:content>
 		        </f:SimpleForm>        
 		</content>
