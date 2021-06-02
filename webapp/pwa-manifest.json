@@ -1,0 +1,12 @@
+{
+	"name": "IG Live Mode",
+	"short_name": "IG Live Mode",
+	"icons": [{
+		"src": "images/icon.png",
+		"type": "image/png"
+	}],
+	"start_url": "/index.html",
+	"display": "standalone",
+	"background_color": "#800080",
+	"theme_color": "#800080"
+}

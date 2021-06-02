@@ -1,8 +1,9 @@
 CACHE MANIFEST
-#qua jun  2 21:38:36 WEST 2021
+#qua jun  2 21:43:43 WEST 2021
 
 manifest.json
 i18n/i18n.properties
+pwa-manifest.json
 index.html
 images/icon.png
 view/Config.view.xml
