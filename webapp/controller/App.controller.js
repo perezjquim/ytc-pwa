@@ -57,7 +57,7 @@ sap.ui.define([
 		_validateCache: function() {
 			const oApplicationCache = window.applicationCache;
 			if (oApplicationCache) {
-				oApplicationCacheaddEventListener('updateready', function(e) {
+				oApplicationCache.addEventListener('updateready', function(e) {
 					if (oApplicationCache.status == oApplicationCache.UPDATEREADY) {
 						const sText = this.getText("updating");
 						this.toast(sText);
