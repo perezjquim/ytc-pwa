@@ -18,6 +18,8 @@ sap.ui.define([
 		_executeAction: function(sEndpoint) {
 			this.setBusy(true);
 
+			this._sEndpoint = sEndpoint;
+
 			const oView = this.getView();
 			Fragment.load({
 				name: "com.perezjquim.iglivemode.pwa.view.fragment.ActionPrompt",
@@ -45,7 +47,7 @@ sap.ui.define([
 				};
 				const sBody = JSON.stringify(oBody);
 
-				fetch(`${this.API_BASE_URL}/${sEndpoint}`, {
+				fetch(`${this.API_BASE_URL}/${this._sEndpoint}`, {
 					method: "POST",
 					body: sBody
 				}).then(() => {
