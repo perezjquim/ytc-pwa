@@ -1,0 +1,23 @@
+<mvc:View 
+    controllerName="com.perezjquim.iglivemode.pwa.controller.Config" 
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.ui.layout.form">
+    <Page 
+        title="{i18n>Config}">
+        <f:SimpleForm 
+            editable="true">
+            <f:content>
+                <Label 
+                    text="{i18n>iguser}" />
+                <Input
+                    value="{config>/iguser}"/>            
+                <Label 
+                    text="{i18n>igpw}" />
+                <Input
+                    value="{config>/igpw}"
+                    type="Password"/>                                
+            </f:content>
+        </f:SimpleForm>        
+    </Page>
+</mvc:View>

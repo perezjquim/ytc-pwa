@@ -1,0 +1,22 @@
+CACHE MANIFEST
+#qua jun  2 19:46:37 WEST 2021
+
+manifest.json
+i18n/i18n.properties
+index.html
+images/icon.png
+view/Config.view.xml
+view/Home.view.xml
+view/App.view.xml
+model/navigation.json
+controller/Config.controller.js
+controller/util/BaseController.js
+controller/Home.controller.js
+controller/App.controller.js
+Component.js
+
+NETWORK:
+*
+
+FALLBACK:
+
