@@ -62,7 +62,9 @@ sap.ui.define([
 						const sText = this.getText("updating");
 						this.toast(sText);
 						oApplicationCache.swapCache();
-						window.location.reload();
+						setTimeout(() => {
+							window.location.reload();
+						}, 2000);
 					} else {}
 				}, false);
 			}
@@ -70,10 +72,13 @@ sap.ui.define([
 
 		_reloadConfig: function() {
 			const sConfig = Storage.get("config");
-			const oConfig = JSON.parse(sConfig);
-
-			const oModel = this.getModel("config");
-			oModel.setData(oConfig);
+			if (sConfig) {
+				const oConfig = JSON.parse(sConfig);
+				if (oConfig) {
+					const oModel = this.getModel("config");
+					oModel.setData(oConfig);
+				}
+			}
 		}
 
 	});
