@@ -18,12 +18,12 @@
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {
-			"icon": "",
-			"favIcon": "",
-			"phone": "",
-			"phone@2": "",
-			"tablet": "",
-			"tablet@2": ""
+			"icon": "images/icon.png",
+			"favIcon": "images/icon.png",
+			"phone": "images/icon.png",
+			"phone@2": "images/icon.png",
+			"tablet": "images/icon.png",
+			"tablet@2": "images/icon.png"
 		},
 		"deviceTypes": {
 			"desktop": true,
