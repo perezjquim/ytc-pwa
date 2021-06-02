@@ -2,8 +2,9 @@ sap.ui.define([
 	"./util/BaseController",
 	"sap/ui/core/routing/History",
 	"sap/ui/core/Fragment",
-	"sap/ui/util/Storage"
-], function(BaseController, History, Fragment, Storage) {
+	"sap/ui/util/Storage",
+	"sap/ui/Device"
+], function(BaseController, History, Fragment, Storage, Device) {
 	"use strict";
 	return BaseController.extend("com.perezjquim.iglivemode.pwa.controller.App", {
 
@@ -38,6 +39,15 @@ sap.ui.define([
 			const oSelectedItem = oEvent.getParameter("item");
 			const sKey = oSelectedItem.getKey();
 			this.navTo(sKey);
+
+			const bIsPhone = Device.system.phone;
+			if (bIsPhone) {
+				const oNavigationListItem = oEvent.getSource();
+				const oNavigationList = oNavigationListItem.getParent();
+				const oSideNavigation = oNavigationList.getParent();
+				const oToolPage = oSideNavigation.getParent();
+				oToolPage.setSideExpanded(false);
+			}
 		},
 
 		onNavButtonPress: function(oEvent) {
