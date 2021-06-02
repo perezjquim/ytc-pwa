@@ -52,7 +52,7 @@ sap.ui.define([
 				fetch(`${this.API_BASE_URL}/${this._sEndpoint}`, {
 					method: "POST",
 					body: sBody
-				}).then((response) => {
+				}).then((oResponse) => {
 					if (oResponse.ok) {
 						const sText = this.getText("action_success");
 						this.toast(sText);
