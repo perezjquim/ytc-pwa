@@ -54,7 +54,7 @@ sap.ui.define([
 			}
 		},
 		getStorage: function() {
-			return jQuery.sap.storage(jQuery.sap.storage.Type.local);
+			return window.localStorage;
 		}
 	});
 });

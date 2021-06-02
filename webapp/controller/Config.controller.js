@@ -7,8 +7,10 @@ sap.ui.define([
 		onConfigChange: function() {
 			const oModel = this.getModel("config");
 			const oConfig = oModel.getData();
+			const sConfig = JSON.stringify(oConfig);
+
 			const oStorage = this.getStorage();
-			oStorage.put("config", oConfig);
+			oStorage.setItem("config", sConfig);
 		}
 	});
 });
