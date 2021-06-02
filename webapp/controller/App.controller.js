@@ -42,9 +42,7 @@ sap.ui.define([
 
 			const bIsPhone = Device.system.phone;
 			if (bIsPhone) {
-				const oNavigationListItem = oEvent.getSource();
-				const oNavigationList = oNavigationListItem.getParent();
-				const oSideNavigation = oNavigationList.getParent();
+				const oSideNavigation = oEvent.getSource();
 				const oToolPage = oSideNavigation.getParent();
 				oToolPage.setSideExpanded(false);
 			}
