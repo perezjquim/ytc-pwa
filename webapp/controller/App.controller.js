@@ -1,8 +1,9 @@
 sap.ui.define([
 	"./util/BaseController",
 	"sap/ui/core/routing/History",
-	"sap/ui/core/Fragment"
-], function(BaseController, SocketHelper, History, Fragment) {
+	"sap/ui/core/Fragment",
+	"sap/ui/util/Storage"
+], function(BaseController, History, Fragment, Storage) {
 	"use strict";
 	return BaseController.extend("com.perezjquim.iglivemode.pwa.controller.App", {
 
