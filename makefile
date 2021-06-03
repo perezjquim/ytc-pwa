@@ -9,7 +9,6 @@ regen-manifest:
 	echo "https://openui5.hana.ondemand.com/resources/sap-ui-core.js" >> $(MANIFEST_FILE)
 	echo "https://openui5.hana.ondemand.com/resources/sap/ui/core/library-preload.js" >> $(MANIFEST_FILE)
 	echo "https://openui5.hana.ondemand.com/resources/sap/ui/layout/library-preload.js" >> $(MANIFEST_FILE)
-	echo "https://openui5.hana.ondemand.com/resources/sap/ui/layout/library-preload.json" >> $(MANIFEST_FILE)
 	echo "https://openui5.hana.ondemand.com/resources/sap/ui/core/messagebundle.properties" >> $(MANIFEST_FILE)
 	echo "https://openui5.hana.ondemand.com/resources/sap-ui-version.json" >> $(MANIFEST_FILE)
 	echo "https://openui5.hana.ondemand.com/resources/sap/ui/core/messagebundle.properties" >> $(MANIFEST_FILE)

@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#qui jun  3 09:22:27 WEST 2021
+#qui jun  3 09:24:21 WEST 2021
 
 manifest.json
 sw.js
@@ -25,7 +25,6 @@ Component.js
 https://openui5.hana.ondemand.com/resources/sap-ui-core.js
 https://openui5.hana.ondemand.com/resources/sap/ui/core/library-preload.js
 https://openui5.hana.ondemand.com/resources/sap/ui/layout/library-preload.js
-https://openui5.hana.ondemand.com/resources/sap/ui/layout/library-preload.json
 https://openui5.hana.ondemand.com/resources/sap/ui/core/messagebundle.properties
 https://openui5.hana.ondemand.com/resources/sap-ui-version.json
 https://openui5.hana.ondemand.com/resources/sap/ui/core/messagebundle.properties
