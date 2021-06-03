@@ -1,7 +1,11 @@
 sap.ui.define([
-
-], function() {
-	return {
+	"sap/ui/base/Object"
+], function(Object) {
+	return Object.extend({
+		_oController: null,
+		constructor: function(oController) {
+			this._oController = oController;
+		},
 		init: function() {
 			this._cleanup();
 			this._registerSW();
@@ -24,5 +28,5 @@ sap.ui.define([
 					});
 			}
 		}
-	};
+	});
 });

@@ -1,7 +1,11 @@
 sap.ui.define([
-
-], function() {
-	return {
+	"sap/ui/base/Object"
+], function(Object) {
+	return Object.extend({
+		_oController: null,
+		constructor: function(oController) {
+			this._oController = oController;
+		},
 		init: function() {
 			const oApplicationCache = window.applicationCache;
 			if (oApplicationCache) {
@@ -14,13 +18,13 @@ sap.ui.define([
 		},
 
 		onUpdateReady: function() {
-			const sText = this.getText("updating");
-			this.toast(sText);
+			const sText = this._oController.getText("updating");
+			this._oController.toast(sText);
 
 			const iReloadDelay = 2000;
 			setTimeout(() => {
 				window.location.reload();
 			}, iReloadDelay);
 		}
-	};
+	});
 });
