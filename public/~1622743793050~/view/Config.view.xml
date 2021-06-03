@@ -17,12 +17,14 @@
                     text="{i18n>general_blacklist}" />
                 <TextArea
                     value="{config>/general_blacklist}"
-                    change="onConfigChange"/>        
+                    change="onConfigChange"
+                    growingMaxLines="20"/>        
                 <Label 
                     text="{i18n>live_whitelist}" />
                 <TextArea
                     value="{config>/live_whitelist}"
-                    change="onConfigChange"/>                                        
+                    change="onConfigChange"
+                    growingMaxLines="20"/>                                        
             </f:content>            
         </f:SimpleForm>        
     </Page>
