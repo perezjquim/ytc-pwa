@@ -1,7 +1,8 @@
 CACHE MANIFEST
-#qui jun  3 08:52:30 WEST 2021
+#qui jun  3 09:00:46 WEST 2021
 
 manifest.json
+sw.js
 i18n/i18n.properties
 pwa-manifest.json
 index.html
