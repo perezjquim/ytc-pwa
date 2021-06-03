@@ -55,17 +55,22 @@ sap.ui.define([
 		_validateCache: function() {
 			const oApplicationCache = window.applicationCache;
 			if (oApplicationCache) {
-				oApplicationCache.addEventListener('updateready', (e) => {
-					if (oApplicationCache.status == oApplicationCache.UPDATEREADY) {
-						const sText = this.getText("updating");
-						this.toast(sText);
-						oApplicationCache.swapCache();
-						setTimeout(() => {
-							window.location.reload(true);
-						}, 2000);
-					} else {}
-				}, false);
+				if (oApplicationCache.status == oApplicationCache.UPDATEREADY) {
+					this.onUpdateReady();
+				} else {
+					oApplicationCache.addEventListener('updateready', this.onUpdateReady.bind(this), false);
+				}
 			}
+		},
+
+		onUpdateReady: function() {
+			const sText = this.getText("updating");
+			this.toast(sText);
+
+			const iReloadDelay = 2000;
+			setTimeout(() => {
+				window.location.reload();
+			}, iReloadDelay);
 		},
 
 		_reloadConfig: function() {
