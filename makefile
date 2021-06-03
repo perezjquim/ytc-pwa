@@ -5,7 +5,7 @@ main: regen-manifest
 regen-manifest:
 	echo "CACHE MANIFEST" > $(MANIFEST_FILE)
 	echo "#$(shell date)\n" >> $(MANIFEST_FILE)	
-	find webapp ! '(' -name '*.appcache' ')' -type f | sed 's/webapp\///g' >> $(MANIFEST_FILE)
+	find webapp ! '(' -name '*.appcache' ')' ! '(' -name '*.html' ')' -type f | sed 's/webapp\///g' >> $(MANIFEST_FILE)
 	echo "https://openui5.hana.ondemand.com/resources/sap-ui-core.js" >> $(MANIFEST_FILE)
 	echo "https://openui5.hana.ondemand.com/resources/sap/ui/core/library-preload.js" >> $(MANIFEST_FILE)
 	echo "https://openui5.hana.ondemand.com/resources/sap/ui/layout/library-preload.js" >> $(MANIFEST_FILE)

@@ -1,11 +1,10 @@
 CACHE MANIFEST
-#qui jun  3 09:24:21 WEST 2021
+#qui jun  3 09:30:47 WEST 2021
 
 manifest.json
 sw.js
 i18n/i18n.properties
 pwa-manifest.json
-index.html
 images/icon.png
 view/Config.view.xml
 view/fragment/ActionPrompt.fragment.xml
