@@ -13,7 +13,17 @@
                 <Input
                     value="{config>/user}"
                     change="onConfigChange"/>                       
-            </f:content>
+                <Label 
+                    text="{i18n>general_blacklist}" />
+                <TextArea
+                    value="{config>/general_blacklist}"
+                    change="onConfigChange"/>        
+                <Label 
+                    text="{i18n>live_whitelist}" />
+                <TextArea
+                    value="{config>/live_whitelist}"
+                    change="onConfigChange"/>                                        
+            </f:content>            
         </f:SimpleForm>        
     </Page>
 </mvc:View>
