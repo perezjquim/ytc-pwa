@@ -9,6 +9,7 @@ sap.ui.define([
 	return BaseController.extend("com.perezjquim.iglivemode.pwa.controller.App", {
 
 		onInit: function(oEvent) {
+			this._prepareServiceWorker();
 			this._validateCache();
 			this._reloadConfig();
 		},
@@ -80,6 +81,12 @@ sap.ui.define([
 				const oConfig = JSON.parse(sConfig);
 				const oModel = this.getModel("config");
 				oModel.setData(oConfig);
+			}
+		},
+
+		_prepareServiceWorker: function() {
+			if (navigator.serviceWorker) {
+				navigator.serviceWorker.register('/sw.js');
 			}
 		}
 

@@ -3,6 +3,7 @@
 	"short_name": "IG Live Mode",
 	"icons": [{
 		"src": "images/icon.png",
+		"sizes": "144x144",
 		"type": "image/png"
 	}],
 	"start_url": "/index.html",
