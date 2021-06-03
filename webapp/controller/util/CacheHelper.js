@@ -1,7 +1,7 @@
 sap.ui.define([
 	"sap/ui/base/Object"
 ], function(Object) {
-	return Object.extend({
+	return Object.extend("com.perezjquim.iglivemode.pwa.controller.util.CacheHelper", {
 		_oController: null,
 		constructor: function(oController) {
 			this._oController = oController;
@@ -23,7 +23,7 @@ sap.ui.define([
 
 			const iReloadDelay = 2000;
 			setTimeout(() => {
-				window.location.reload();
+				window.location.reload(true);
 			}, iReloadDelay);
 		}
 	});

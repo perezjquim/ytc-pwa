@@ -11,8 +11,12 @@ sap.ui.define([
 	return BaseController.extend("com.perezjquim.iglivemode.pwa.controller.App", {
 
 		onInit: function(oEvent) {
-			SWHelper.init();
-			CacheHelper.init();
+			const oSWHelper = new SWHelper(this);
+			oSWHelper.init();
+
+			const oCacheHelper = new CacheHelper(this);
+			oCacheHelper.init();
+
 			this._reloadConfig();
 		},
 

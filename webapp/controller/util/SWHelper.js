@@ -1,7 +1,7 @@
 sap.ui.define([
 	"sap/ui/base/Object"
 ], function(Object) {
-	return Object.extend({
+	return Object.extend("com.perezjquim.iglivemode.pwa.controller.util.SWHelper", {
 		_oController: null,
 		constructor: function(oController) {
 			this._oController = oController;
