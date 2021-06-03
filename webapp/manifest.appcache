@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#qui jun  3 09:00:46 WEST 2021
+#qui jun  3 09:09:28 WEST 2021
 
 manifest.json
 sw.js
@@ -16,7 +16,9 @@ model/navigation.json
 model/config.json
 model/dummy.json
 controller/Config.controller.js
+controller/util/SWHelper.js
 controller/util/BaseController.js
+controller/util/CacheHelper.js
 controller/Home.controller.js
 controller/App.controller.js
 Component.js
