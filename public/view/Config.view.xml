@@ -1,0 +1,19 @@
+<mvc:View 
+    controllerName="com.perezjquim.iglivemode.pwa.controller.Config" 
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.ui.layout.form">
+    <Page 
+        title="{i18n>Config}">
+        <f:SimpleForm 
+            editable="true">
+            <f:content>
+                <Label 
+                    text="{i18n>user}" />
+                <Input
+                    value="{config>/user}"
+                    change="onConfigChange"/>                       
+            </f:content>
+        </f:SimpleForm>        
+    </Page>
+</mvc:View>
