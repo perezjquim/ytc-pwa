@@ -50,7 +50,7 @@ sap.ui.define([
 			if (sPreviousHash) {
 				window.history.go(-1);
 			} else {
-				this.navTo("Home", true);
+				this.navTo("Home", {}, true);
 			}
 		},
 		getStorage: function() {
