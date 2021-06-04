@@ -37,6 +37,27 @@
 			sap.ui.require([
 		        "sap/ui/core/ComponentContainer"
 		      ], function (ComponentContainer) {
+			const fnOldOpen = XMLHttpRequest.prototype.open;
+			const sCachebusterURL = "sap-ui-cachebuster-info.json";
+
+			XMLHttpRequest.prototype.open = function()
+			{
+				if(fnOldOpen)
+				{
+					fnOldOpen.apply(this,arguments);
+				}
+				const sUrl = arguments && arguments[1];
+				if(sUrl)
+				{
+					if(sUrl.includes(sDraftUrl))
+					{
+					    	xhr.setRequestHeader("Cache-Control", "no-cache, no-store, max-age=0");
+						xhr.setRequestHeader("Expires", "Tue, 01 Jan 1980 1:00:00 GMT");
+    						xhr.setRequestHeader("Pragma", "no-cache");
+					}	
+				}
+			};		
+
 		          new ComponentContainer({
 		            height : "100%",
 		            name : "com.perezjquim.iglivemode.pwa"
