@@ -1,71 +1,56 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<meta name="apple-mobile-web-app-title" content="IG Live Mode">
-	<link rel="apple-touch-icon" href="images/icon.png">
-	<link rel="icon" type="image/png" href="images/icon.png"/>	
-	<link rel="manifest" href="pwa-manifest.json">
-	<meta name="msapplication-TileImage" content="images/icon.png">
-	<meta name="msapplication-TileColor" content="#800080">
-	<meta name="theme-color" content="#800080">
-	<title>IG Live Mode</title>
-	<style>
-		body {
-			background: #800080;
-		}
-		#splash-screen {
-			color:white;
-			text-align:center;
-		}
-	</style>
-	<script id="sap-ui-bootstrap"
-	    src="https://openui5.hana.ondemand.com/resources/sap-ui-cachebuster/sap-ui-core.js"
-    		data-sap-ui-appCacheBuster="./"
-		data-sap-ui-theme="sap_fiori_3"
-		data-sap-ui-resourceroots='{"com.perezjquim.iglivemode.pwa": "./"}'
-		data-sap-ui-compatVersion="edge"
-    		data-sap-ui-bindingSyntax='complex'		
-		data-sap-ui-async="true"
-		data-sap-ui-frameOptions="trusted">
-	</script>
-	<script>
-		sap.ui.getCore().attachInit(function() {
-			sap.ui.require([
-		        "sap/ui/core/ComponentContainer"
-		      ], function (ComponentContainer) {
-			const fnOldOpen = XMLHttpRequest.prototype.open;
-			const sCachebusterURL = "sap-ui-cachebuster-info.json";
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="IG Live Mode">
+        <link rel="apple-touch-icon" href="images/icon.png">
+        <link rel="icon" type="image/png" href="images/icon.png"/>
+        <link rel="manifest" href="pwa-manifest.json">
+        <meta name="msapplication-TileImage" content="images/icon.png">
+        <meta name="msapplication-TileColor" content="#800080">
+        <meta name="theme-color" content="#800080">
+        <title>IG Live Mode</title>
+        <style>
+            body {
+                background: #800080;
+            }
 
-			XMLHttpRequest.prototype.open = function()
-			{
-				if(fnOldOpen)
-				{
-					fnOldOpen.apply(this,arguments);
-				}
-				const sUrl = arguments && arguments[1];
-				if(sUrl)
-				{
-					if(sUrl.includes(sCachebusterURL))
-					{
-					    	xhr.setRequestHeader("Cache-Control", "no-cache, no-store, max-age=0");
-						xhr.setRequestHeader("Expires", "Tue, 01 Jan 1980 1:00:00 GMT");
-    						xhr.setRequestHeader("Pragma", "no-cache");
-					}	
-				}
-			};		
+            #splash-screen {
+                color: white;
+                text-align: center;
+            }
+        </style>
+        <script id="sap-ui-bootstrap" src="https://openui5.hana.ondemand.com/resources/sap-ui-cachebuster/sap-ui-core.js" data-sap-ui-appCacheBuster="./" data-sap-ui-theme="sap_fiori_3" data-sap-ui-resourceroots='{"com.perezjquim.iglivemode.pwa": "./"}' data-sap-ui-compatVersion="edge" data-sap-ui-bindingSyntax='complex' data-sap-ui-async="true" data-sap-ui-frameOptions="trusted"></script>
+        <script>
+            sap.ui.getCore().attachInit(function() {
+                sap.ui.require(["sap/ui/core/ComponentContainer"], function(ComponentContainer) {
+                    const fnOldOpen = XMLHttpRequest.prototype.open;
+                    const sCachebusterURL = "sap-ui-cachebuster-info.json";
 
-		          new ComponentContainer({
-		            height : "100%",
-		            name : "com.perezjquim.iglivemode.pwa"
-		          }).placeAt("body");
-		      });
-		});	
-	</script> 	
-</head>
-	<body class="sapUiBody" id="body">
-	</body>
+                    XMLHttpRequest.prototype.open = function() {
+                        if (fnOldOpen) {
+                            fnOldOpen.apply(this, arguments);
+                        }
+                        const sUrl = arguments && arguments[1];
+                        if (sUrl) {
+                            if (sUrl.includes(sDraftUrl)) {
+                                xhr.setRequestHeader("Cache-Control", "no-cache, no-store, max-age=0");
+                                xhr.setRequestHeader("Expires", "Tue, 01 Jan 1980 1:00:00 GMT");
+                                xhr.setRequestHeader("Pragma", "no-cache");
+                            }
+                        }
+                    };
+
+                    new ComponentContainer({
+                        height: "100%",
+                        name: "com.perezjquim.iglivemode.pwa"
+                    }).placeAt("body");
+                });
+            });
+        </script>
+    </head>
+    <body class="sapUiBody" id="body"></body>
 </html>
