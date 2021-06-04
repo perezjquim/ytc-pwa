@@ -49,7 +49,7 @@
 				const sUrl = arguments && arguments[1];
 				if(sUrl)
 				{
-					if(sUrl.includes(sDraftUrl))
+					if(sUrl.includes(sCachebusterURL))
 					{
 					    	xhr.setRequestHeader("Cache-Control", "no-cache, no-store, max-age=0");
 						xhr.setRequestHeader("Expires", "Tue, 01 Jan 1980 1:00:00 GMT");
