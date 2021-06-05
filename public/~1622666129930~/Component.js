@@ -1,1 +1,0 @@
-sap.ui.define(["sap/ui/core/UIComponent","sap/ui/Device"],function(i,e){"use strict";return i.extend("com.perezjquim.iglivemode.pwa.Component",{metadata:{manifest:"json"},init:function(){i.prototype.init.apply(this,arguments);this.getRouter().initialize()}})});

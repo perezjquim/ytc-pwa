@@ -1,7 +1,7 @@
 {
 	"_version": "1.12.0",
 	"sap.app": {
-		"id": "com.perezjquim.iglivemode.pwa",
+		"id": "com.perezjquim.ytc.pwa",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
 		"applicationVersion": {
@@ -33,7 +33,7 @@
 	},
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "com.perezjquim.iglivemode.pwa.view.App",
+			"viewName": "com.perezjquim.ytc.pwa.view.App",
 			"type": "XML",
 			"async": true
 		},
@@ -53,16 +53,8 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "com.perezjquim.iglivemode.pwa.i18n.i18n"
+					"bundleName": "com.perezjquim.ytc.pwa.i18n.i18n"
 				}
-			},
-			"misc": {
-				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/dummy.json"
-			},
-			"config": {
-				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/config.json"
 			},
 			"prompt": {
 				"type": "sap.ui.model.json.JSONModel",
@@ -80,7 +72,7 @@
 				"viewType": "XML",
 				"async": true,
 				"controlId": "app",
-				"viewPath": "com.perezjquim.iglivemode.pwa.view",
+				"viewPath": "com.perezjquim.ytc.pwa.view",
 				"controlAggregation": "pages"
 			},
 			"routes": [{
@@ -89,12 +81,6 @@
 				"target": [
 					"Home"
 				]
-			}, {
-				"name": "Config",
-				"pattern": "Config",
-				"target": [
-					"Config"
-				]
 			}],
 			"targets": {
 				"Home": {
@@ -102,12 +88,6 @@
 					"transition": "slide",
 					"controlAggregation": "pages",
 					"viewName": "Home"
-				},
-				"Config": {
-					"viewType": "XML",
-					"transition": "slide",
-					"controlAggregation": "pages",
-					"viewName": "Config"
 				}
 			}
 		}
