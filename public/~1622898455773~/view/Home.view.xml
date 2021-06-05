@@ -16,11 +16,11 @@
                 <Input value="{prompt>/start_time}"/>
                 <Label text="{i18n>duration}"/>
                 <Input value="{prompt>/duration}"/>
+                <Label value="{i18n>download}"/>
                 <HBox justifyContent="SpaceBetween">                    
                     <Button 
                     	icon="sap-icon://download" 
-                    	press="onPressDownload" 
-                        text="{i18n>download}"
+                    	press="onPressDownload"
                     	type="Emphasized" />
                 </HBox>
             </f:content>
