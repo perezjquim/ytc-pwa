@@ -9,7 +9,7 @@ sap.ui.define([
 		onPressDownload: function() {
 			this.setBusy(true);
 
-			const oPromptModel = this.getModel("config");
+			const oPromptModel = this.getModel("prompt");
 			const oPromptData = oPromptModel.getData();
 
 			const oSearchParams = new URLSearchParams(oPromptData);
