@@ -13,9 +13,17 @@
                 <Label text="{i18n>url}"/>
                 <Input value="{prompt>/url}"/>
                 <Label text="{i18n>start_time}"/>
-                <Input value="{prompt>/start_time}"/>
+                <MaskInput mask="TT:TT:TT" placeholderSymbol="_" value="{prompt>/start_time}">
+                    <rules>
+                        <MaskInputRule maskFormatSymbol="T" regex="[0-9]"/>
+                    </rules>
+                </MaskInput>
                 <Label text="{i18n>duration}"/>
-                <Input value="{prompt>/duration}"/>
+                <MaskInput mask="TT:TT:TT" placeholderSymbol="_" value="{prompt>/duration}">
+                    <rules>
+                        <MaskInputRule maskFormatSymbol="T" regex="[0-9]"/>
+                    </rules>
+                </MaskInput>
                 <Label text="{i18n>download}"/>
                 <HBox justifyContent="SpaceBetween">                    
                     <Button 
