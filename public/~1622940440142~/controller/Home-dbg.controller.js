@@ -13,7 +13,7 @@ sap.ui.define([
 			const oPromptData = oPromptModel.getData();
 
 			const oSearchParams = new URLSearchParams(oPromptData);
-			const sSearchParams = oSearchParams.toString();
+			const sSearchParams = decodeURIComponent(oSearchParams.toString());
 
 			const sDownloadUrl = `${this.API_BASE_URL}/crop-video?${sSearchParams}`;
 			window.open(sDownloadUrl);

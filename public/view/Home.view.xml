@@ -13,13 +13,13 @@
                 <Label text="{i18n>url}"/>
                 <Input value="{prompt>/url}"/>
                 <Label text="{i18n>start_time}"/>
-                <MaskInput mask="TT:TT:TT" placeholderSymbol="_" value="{prompt>/start_time}">
+                <MaskInput mask="TT:TT" placeholderSymbol="_" value="{prompt>/start_time}">
                     <rules>
                         <MaskInputRule maskFormatSymbol="T" regex="[0-9]"/>
                     </rules>
                 </MaskInput>
-                <Label text="{i18n>duration}"/>
-                <MaskInput mask="TT:TT:TT" placeholderSymbol="_" value="{prompt>/duration}">
+                <Label text="{i18n>end_time}"/>
+                <MaskInput mask="TT:TT" placeholderSymbol="_" value="{prompt>/end_time}">
                     <rules>
                         <MaskInputRule maskFormatSymbol="T" regex="[0-9]"/>
                     </rules>
