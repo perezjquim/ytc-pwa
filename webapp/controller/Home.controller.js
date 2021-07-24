@@ -25,6 +25,7 @@ sap.ui.define([
 							const oBlob = new Blob([oData], {
 								type: 'application/octet-stream'
 							});
+							this.setBusy(false);
 							if (window.navigator.msSaveBlob) {
 								window.navigator.msSaveBlob(oBlob, sFilename);
 							} else {
@@ -36,7 +37,7 @@ sap.ui.define([
 							}
 						});
 					} else {
-						throw new Error();
+						throw new Error("Response NOK");
 					}
 				})
 				.catch((oError) => {
