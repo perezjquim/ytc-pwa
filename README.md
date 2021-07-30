@@ -5,4 +5,4 @@
 ### Screenshots
 <img src="https://imgur.com/il7N1ip.png" width="333" height="556"/> <img src="https://imgur.com/q1X0o4a.png" width="333" height="556"/> <img src="https://imgur.com/nHa036I.png" width="333" height="556"/>
 
-### <a href="https://perezjquim-ytc-pwa.herokuapp.com/index.html" >Try it out</a>
+### <a href="https://perezjquim-ytc-pwa.herokuapp.com/index.html" target="_blank">Try it out</a>
