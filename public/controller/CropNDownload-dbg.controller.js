@@ -2,7 +2,7 @@ sap.ui.define([
 	"./util/BaseController"
 ], function(BaseController) {
 	"use strict";
-	return BaseController.extend("com.perezjquim.ytc.pwa.controller.Home", {
+	return BaseController.extend("com.perezjquim.ytc.pwa.controller.CropNDownload", {
 
 		API_BASE_URL: "https://perezjquim-ytc.herokuapp.com",
 

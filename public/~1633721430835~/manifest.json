@@ -81,6 +81,12 @@
 				"target": [
 					"Home"
 				]
+			}, {
+				"name": "CropNDownload",
+				"pattern": "CropNDownload",
+				"target": [
+					"CropNDownload"
+				]
 			}],
 			"targets": {
 				"Home": {
@@ -88,6 +94,12 @@
 					"transition": "slide",
 					"controlAggregation": "pages",
 					"viewName": "Home"
+				},
+				"CropNDownload": {
+					"viewType": "XML",
+					"transition": "slide",
+					"controlAggregation": "pages",
+					"viewName": "CropNDownload"
 				}
 			}
 		}

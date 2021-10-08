@@ -2,6 +2,9 @@
 	"items": [{
 		"key": "Home",
 		"icon": "sap-icon://home"
+	}, {
+		"key": "CropNDownload",
+		"icon": "sap-icon://download"
 	}],
 	"selected": null
 }
