@@ -4,7 +4,7 @@ sap.ui.define([
 	"use strict";
 	return BaseController.extend("com.perezjquim.ytc.pwa.controller.CropNDownload", {
 
-		API_BASE_URL: "https://perezjquim-ig-live-mode.herokuapp.com",
+		API_BASE_URL: "https://perezjquim-ytc.herokuapp.com",
 
 		onPressDownload: async function() {
 			this.setBusy(true);
