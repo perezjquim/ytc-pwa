@@ -8,10 +8,25 @@
     <Page 
     	title="{i18n>CropNDownload}">
         <f:SimpleForm 
+            visible="{= ${misc>/is_fetching_video_info} || !!${video_info>/author} }"
+            busy="{misc>/is_fetching_video_info}">
+            <f:content>
+                <Label text="{i18n>title}"/>
+                <Text text="{video_info>/title}"/>
+                <Label text="{i18n>author}"/>
+                <Text text="{video_info>/author}"/>  
+                <Label text="{i18n>thumbnail}"/>
+                <Image height="20vh" src="{video_info>/thumbnail_url}"/>                               
+                <Label text="{i18n>duration}" />
+                <Text text="{video_info>/duration}"/>   
+            </f:content>
+        </f:SimpleForm>        
+
+        <f:SimpleForm 
         	editable="true">
             <f:content>
                 <Label text="{i18n>url}"/>
-                <Input value="{prompt>/url}"/>
+                <Input value="{prompt>/url}" change="onUrlChanged"/>
                 <Label text="{i18n>start_time}"/>
                 <MaskInput mask="TT:TT" placeholderSymbol="_" value="{prompt>/start_time}">
                     <rules>
@@ -24,6 +39,16 @@
                         <MaskInputRule maskFormatSymbol="T" regex="[0-9]"/>
                     </rules>
                 </MaskInput>
+                <Label text="{i18n>split}"/>
+                <HBox justifyContent="SpaceBetween">                    
+                    <CheckBox selected="{prompt>/split}"/>
+                    <MaskInput visible="{prompt>/split}" mask="TT:TT" placeholderSymbol="_" value="{prompt>/split_interval}">
+                        <rules>
+                            <MaskInputRule maskFormatSymbol="T" regex="[0-9]"/>
+                        </rules>
+                    </MaskInput>                          
+                </HBox>                         
+
                 <Label text="{i18n>download}"/>
                 <HBox justifyContent="SpaceBetween">                    
                     <Button 

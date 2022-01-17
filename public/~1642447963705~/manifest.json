@@ -63,6 +63,13 @@
 			"navigation": {
 				"type": "sap.ui.model.json.JSONModel",
 				"uri": "model/navigation.json"
+			},
+			"misc": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/misc.json"
+			},
+			"video_info": {
+				"type": "sap.ui.model.json.JSONModel"
 			}
 		},
 		"resources": {},
