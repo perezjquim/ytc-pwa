@@ -71,6 +71,8 @@ sap.ui.define([
 							"blob_url": sBlobUrl
 						}]);
 
+						oBlobData.sort((a, b) => a.["file_name"] > b.["file_name"] ? 1 : -1);
+
 						oBlobModel.setData(oBlobData);
 					}
 				});
