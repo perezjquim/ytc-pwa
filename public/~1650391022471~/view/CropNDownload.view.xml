@@ -68,7 +68,7 @@
                                 <HBox 
                                     justifyContent="SpaceBetween"
                                     alignItems="Center">   
-                                    <core:HTML content="&lt;video src='{video_blobs>blob_url}' controls autoplay /&gt;"/>
+                                    <core:HTML content="&lt;video class='z_video_preview' src='{video_blobs>blob_url}' controls /&gt;"/>
                                     <Button 
                                         icon="sap-icon://download" 
                                         press="onPressDownload"

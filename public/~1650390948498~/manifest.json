@@ -75,7 +75,11 @@
 				"type": "sap.ui.model.json.JSONModel"
 			}
 		},
-		"resources": {},
+		"resources": {
+			"css": [{
+				"uri": "css/extra.css"
+			}]
+		},
 		"routing": {
 			"config": {
 				"routerClass": "sap.m.routing.Router",
