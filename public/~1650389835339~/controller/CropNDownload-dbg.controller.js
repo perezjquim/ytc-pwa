@@ -6,7 +6,7 @@ sap.ui.define([
 
 		API_BASE_URL: "https://perezjquim-ytc.herokuapp.com",
 
-		onPressDownload: async function() {
+		onPrepareVideo: async function() {
 			this.setBusy(true);
 
 			const oPromptModel = this.getModel("prompt");
@@ -37,7 +37,7 @@ sap.ui.define([
 
 						var sInnerEndTime = "";
 
-						if (oTime.getTime() <= oEndTime.getTime()) {
+						if (oTime.getTime() < oEndTime.getTime()) {
 							sInnerEndTime = `${oTime.getMinutes()}:${oTime.getSeconds()}`;
 							oFetchPromises.push(await this._downloadVideo(sVideoUrl, sInnerBeginTime, sInnerEndTime));
 						} else {
@@ -53,6 +53,9 @@ sap.ui.define([
 
 				const oResponses = await Promise.all(oFetchPromises);
 
+				const oBlobModel = this.getModel("video_blobs");
+				var oBlobData = [];
+
 				oResponses.forEach(async function(oResponse) {
 					if (oResponse.ok) {
 						const sFilename = oResponse.headers.get('content-disposition').split('filename=')[1].split(';')[0];
@@ -61,18 +64,14 @@ sap.ui.define([
 						const oBlob = new Blob([oFileData], {
 							type: 'application/octet-stream'
 						});
-						if (window.navigator.msSaveBlob) {
-							window.navigator.msSaveBlob(oBlob, sFilename);
-						} else {
-							const sBlobUrl = window.URL.createObjectURL(oBlob);
-							const oAnchor = document.createElement('a');
-							oAnchor.setAttribute('href', sBlobUrl);
-							oAnchor.setAttribute('download', sFilename);
-							oAnchor.click();
-						}
 
-					} else {
-						throw new Error("Response NOK");
+						const sBlobUrl = window.URL.createObjectURL(oBlob);
+						oBlobData = oBlobData.concat([{
+							"file_name": sFilename,
+							"blob_url": sBlobUrl
+						}]);
+
+						oBlobModel.setData(oBlobData);
 					}
 				});
 
@@ -85,38 +84,80 @@ sap.ui.define([
 			}
 		},
 
-		onUrlChanged: async function() {
-			const oPromptModel = this.getModel("prompt");
-			const sVideoUrl = decodeURIComponent(oPromptModel.getProperty("/url"));
+		onParamChanged: async function(oEvent) {
 
-			if (sVideoUrl) {
+			const oWizard = this.byId("ytc-wizard");
+			oWizard.previousStep();
 
-				const oMiscModel = this.getModel("misc");
-				oMiscModel.setProperty("/is_fetching_video_info", true);
+			const oBlobModel = this.getModel("video_blobs");
+			oBlobModel.setData([]);
 
-				const sTimestamp = new Date().getTime();
+			const oSource = oEvent.getSource();
+			const oBinding = oSource.getBinding("value") || oSource.getBinding("selected");
+			const sProperty = oBinding.getPath();
 
-				const sVideoInfoUrl = `${this.API_BASE_URL}/get-video-info?url=${sVideoUrl}&=${sTimestamp}`;
+			switch (sProperty) {
 
-				try {
-					const oResponse = await fetch(sVideoInfoUrl);
+				case "/url":
+					const oPromptModel = this.getModel("prompt");
+					const sVideoUrl = decodeURIComponent(oPromptModel.getProperty("/url"));
 
 					const oVideoInfoModel = this.getModel("video_info");
 
-					if (oResponse.ok) {
-						const oVideoInfo = await oResponse.json();
-						oVideoInfoModel.setData(oVideoInfo);
+					if (sVideoUrl) {
+
+						const oMiscModel = this.getModel("misc");
+						oMiscModel.setProperty("/is_fetching_video_info", true);
+
+						const sTimestamp = new Date().getTime();
+
+						const sVideoInfoUrl = `${this.API_BASE_URL}/get-video-info?url=${sVideoUrl}&=${sTimestamp}`;
+
+						try {
+							const oResponse = await fetch(sVideoInfoUrl);
+
+							if (oResponse.ok) {
+								const oVideoInfo = await oResponse.json();
+								oVideoInfoModel.setData(oVideoInfo);
+
+								// setting video duration as default end time
+								var sDuration = oVideoInfo.duration;
+								if (sDuration.length > 5) {
+									sDuration = sDuration.substr(sDuration.length - 5);
+								}
+								const oPromptModel = this.getModel("prompt");
+								oPromptModel.setProperty("/end_time", sDuration);
+							} else {
+								oVideoInfoModel.setData({});
+							}
+
+						} catch (oException) {
+							console.warn(oException);
+							oVideoInfoModel.setData({});
+						}
+
+						oMiscModel.setProperty("/is_fetching_video_info", false);
 					} else {
 						oVideoInfoModel.setData({});
 					}
+					break;
 
-				} catch (oException) {
-					console.warn(oException);
-				}
-
-				oMiscModel.setProperty("/is_fetching_video_info", false);
-
+				default:
+					break;
 			}
+		},
+
+		onPressDownload: function(oEvent) {
+
+			const oSource = oEvent.getSource();
+			const oContext = oSource.getBindingContext("video_blobs");
+			const sFilename = oContext.getProperty("file_name");
+			const sBlobUrl = oContext.getProperty("blob_url");
+
+			const oAnchor = document.createElement('a');
+			oAnchor.setAttribute('href', sBlobUrl);
+			oAnchor.setAttribute('download', sFilename);
+			oAnchor.click();
 		},
 
 		_downloadVideo: function(sVideoUrl, sStartTime, sEndTime) {
@@ -136,6 +177,5 @@ sap.ui.define([
 
 			return fetch(sDownloadUrl);
 		}
-
 	});
 });

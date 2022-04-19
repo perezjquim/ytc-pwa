@@ -70,6 +70,9 @@
 			},
 			"video_info": {
 				"type": "sap.ui.model.json.JSONModel"
+			},
+			"video_blobs": {
+				"type": "sap.ui.model.json.JSONModel"
 			}
 		},
 		"resources": {},
