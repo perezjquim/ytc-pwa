@@ -13,21 +13,7 @@
             stepActivate="onPrepareVideo">
             <WizardStep
                 title="{i18n>step_params}"
-                validated="{= !!${video_info>/author} }">    
-                <f:SimpleForm 
-                    visible="{= ${misc>/is_fetching_video_info} || !!${video_info>/author} }"
-                    busy="{misc>/is_fetching_video_info}">
-                    <f:content>
-                        <Label text="{i18n>title}"/>
-                        <Text text="{video_info>/title}"/>
-                        <Label text="{i18n>author}"/>
-                        <Text text="{video_info>/author}"/>  
-                        <Label text="{i18n>thumbnail}"/>
-                        <Image height="20vh" src="{video_info>/thumbnail_url}"/>                               
-                        <Label text="{i18n>duration}" />
-                        <Text text="{video_info>/duration}"/>   
-                    </f:content>
-                </f:SimpleForm>
+                validated="{= !!${video_info>/author} }"> 
                 <f:SimpleForm 
                     editable="true">
                     <f:content>
@@ -55,7 +41,22 @@
                             </MaskInput>                          
                         </HBox>
                     </f:content>
-                </f:SimpleForm>   
+                </f:SimpleForm>                
+
+                <f:SimpleForm 
+                    visible="{= ${misc>/is_fetching_video_info} || !!${video_info>/author} }"
+                    busy="{misc>/is_fetching_video_info}">
+                    <f:content>
+                        <Label text="{i18n>title}"/>
+                        <Text text="{video_info>/title}"/>
+                        <Label text="{i18n>author}"/>
+                        <Text text="{video_info>/author}"/>  
+                        <Label text="{i18n>thumbnail}"/>
+                        <Image height="20vh" src="{video_info>/thumbnail_url}"/>                               
+                        <Label text="{i18n>duration}" />
+                        <Text text="{video_info>/duration}"/>   
+                    </f:content>
+                </f:SimpleForm>
             </WizardStep>
             <WizardStep 
                 title="{i18n>step_preview+dl}"
