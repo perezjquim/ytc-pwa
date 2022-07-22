@@ -74,16 +74,19 @@ sap.ui.define([
 						oBlobData.sort((a, b) => a["file_name"] > b["file_name"] ? 1 : -1);
 
 						oBlobModel.setData(oBlobData);
+					} else {
+						const sErrorMsg = await oResponse.text();
+						console.warn(sErrorMsg);
+						this.toast(sErrorMsg);
 					}
 				});
 
-				this.setBusy(false);
-
 			} catch (oException) {
-				this.setBusy(false);
 				console.warn(oException);
 				this.toast(oException);
 			}
+
+			this.setBusy(false);			
 		},
 
 		onParamChanged: async function(oEvent) {
@@ -122,15 +125,22 @@ sap.ui.define([
 								const oVideoInfo = await oResponse.json();
 								oVideoInfoModel.setData(oVideoInfo);
 
-								// setting video duration as default end time
-								var sDuration = oVideoInfo.duration;
-								if (sDuration.length > 5) {
-									sDuration = sDuration.substr(sDuration.length - 5);
+								if(!oPromptModel.getProperty("/end_time"))
+								{
+									// setting video duration as default end time
+									var sDuration = oVideoInfo.duration;
+									if (sDuration.length > 5) {
+										sDuration = sDuration.substr(sDuration.length - 5);
+									}
+									const oPromptModel = this.getModel("prompt");
+									oPromptModel.setProperty("/end_time", sDuration);
 								}
-								const oPromptModel = this.getModel("prompt");
-								oPromptModel.setProperty("/end_time", sDuration);
 							} else {
 								oVideoInfoModel.setData({});
+
+								const sErrorMsg = await oResponse.text();
+								console.warn(sErrorMsg);
+								this.toast(sErrorMsg);								
 							}
 
 						} catch (oException) {
@@ -162,7 +172,7 @@ sap.ui.define([
 			oAnchor.click();
 		},
 
-		_downloadVideo: function(sVideoUrl, sStartTime, sEndTime) {
+		_downloadVideo: async function(sVideoUrl, sStartTime, sEndTime) {
 
 			const sTimestamp = new Date().getTime();
 
