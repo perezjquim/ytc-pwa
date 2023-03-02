@@ -79,7 +79,7 @@ sap.ui.define([
 						console.warn(sErrorMsg);
 						this.toast(sErrorMsg);
 					}
-				});
+				}.bind(this));
 
 			} catch (oException) {
 				console.warn(oException);
