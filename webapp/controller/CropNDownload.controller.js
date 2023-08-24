@@ -9,6 +9,8 @@ sap.ui.define([
 		onPrepareVideo: async function() {
 			this.setBusy(true);
 
+			const oWizard = this.byId("ytc-wizard");		
+
 			const oPromptModel = this.getModel("prompt");
 			const bSplit = oPromptModel.getProperty("/split");
 
@@ -78,12 +80,14 @@ sap.ui.define([
 						const sErrorMsg = await oResponse.text();
 						console.warn(sErrorMsg);
 						this.toast(sErrorMsg);
+						oWizard.previousStep();	
 					}
 				}.bind(this));
 
 			} catch (oException) {
 				console.warn(oException);
 				this.toast(oException);
+				oWizard.previousStep();	
 			}
 
 			this.setBusy(false);			
@@ -140,7 +144,7 @@ sap.ui.define([
 
 								const sErrorMsg = await oResponse.text();
 								console.warn(sErrorMsg);
-								this.toast(sErrorMsg);								
+								this.toast(sErrorMsg);		
 							}
 
 						} catch (oException) {

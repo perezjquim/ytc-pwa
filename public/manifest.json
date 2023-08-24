@@ -93,7 +93,7 @@
 				"name": "Home",
 				"pattern": "",
 				"target": [
-					"Home"
+					"CropNDownload"
 				]
 			}, {
 				"name": "CropNDownload",
