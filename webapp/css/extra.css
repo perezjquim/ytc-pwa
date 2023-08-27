@@ -3,3 +3,38 @@
 	width: 60vw;
 	height: auto;	
 }
+
+:root
+{
+	--z_ytc_color: #f05423;
+}
+
+.sapUiLocalBusyIndicatorAnimation>div::before,
+.sapMWizardProgressNavStep[data-sap-ui-wpn-step-current="true"] .sapMWizardProgressNavStepCircle,
+.sapMWizardProgressNavStep[data-sap-ui-wpn-step-current="true"] .sapMWizardProgressNavStepCircle::after,
+.sapMWizardProgressNavStepContainer::after,
+.sapMBtnEmphasized
+{
+	background-color: var(--z_ytc_color) !important;
+}
+
+.sapMWizardProgressNavStep:not([data-sap-ui-wpn-step-current="true"]) .sapMWizardProgressNavStepCircle,
+.sapMWizardProgressNavStep[data-sap-ui-wpn-step-current="true"] .sapMWizardProgressNavStepTitle
+{
+	color: var(--z_ytc_color) !important;
+}
+
+.sapMWizardProgressNavStep:focus .sapMWizardProgressNavStepContainer
+{
+	outline-color: var(--z_ytc_color) !important;
+}
+
+.sapMInputBaseInner:not(.sapMInputBaseReadonlyWrapper):not(.sapMInputBaseContentWrapperState):focus,
+.sapMWizardProgressNavStep[data-sap-ui-wpn-step-current="true"] .sapMWizardProgressNavStepCircle,
+.sapMFocus.sapMInputBase .sapMInputBaseContentWrapper:not(.sapMInputBaseDisabledWrapper)::before,
+.sapMBtnEmphasized,
+.sapMWizardProgressNavStepCircle,
+.sapMWizardProgressNavStep::after
+{
+	border-color: var(--z_ytc_color) !important;
+}

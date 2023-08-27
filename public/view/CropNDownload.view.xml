@@ -5,8 +5,19 @@
     xmlns:l="sap.ui.layout"
     xmlns:f="sap.ui.layout.form"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:sapf="sap.f"
+    xmlns:tnt="sap.tnt"
 >
-    <Page title="{i18n>CropNDownload}">
+    <Page showHeader="false">
+        <subHeader>
+            <Toolbar width="100%">
+		        <tnt:ToolHeader width="100%">
+			        <Image src="./images/icon.png"/>
+                    <Title text="{i18n>appTitle}"/>
+                    <ToolbarSpacer />
+		        </tnt:ToolHeader>
+            </Toolbar>
+        </subHeader>
         <Wizard
             id="ytc-wizard"
             stepActivate="onPrepareVideo"
