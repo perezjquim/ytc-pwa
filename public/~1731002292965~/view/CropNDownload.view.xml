@@ -24,7 +24,8 @@
         >
             <WizardStep
                 title="{i18n>step_params}"
-                validated="{= !!${video_info>/author} 
+                validated="{= 
+                    !!${prompt>/url}
                     &amp;&amp;
                     !!${prompt>/end_time}
                     &amp;&amp;
@@ -42,21 +43,14 @@
                 </f:SimpleForm>
 
                 <f:SimpleForm
-                    visible="{= ${misc>/is_fetching_video_info} || !!${video_info>/author} }"
-                    busy="{misc>/is_fetching_video_info}"
+                    visible="{= !!${prompt>/url} }"
                 >
                     <f:content>
-                        <Label text="{i18n>title}" />
-                        <Text text="{video_info>/title}" />
-                        <Label text="{i18n>author}" />
-                        <Text text="{video_info>/author}" />
-                        <Label text="{i18n>thumbnail}" />
-                        <Image
-                            height="20vh"
-                            src="{video_info>/thumbnail_url}"
-                        />
-                        <Label text="{i18n>duration}" />
-                        <Text text="{video_info>/duration}" />
+                        <Label text="{i18n>preview}" />
+                        <core:HTML content="{
+                            path: 'prompt>/url',
+                            formatter: '.prepareIframeContent'
+                        }"/>
 
                         <Label text="{i18n>start_time}" />
                         <MaskInput
@@ -114,7 +108,7 @@
                 title="{i18n>step_preview+dl}"
                 validated="false"
             >
-                <f:SimpleForm visible="{= !!${video_info>/author} }">
+                <f:SimpleForm visible="{= !!${prompt>/url} }">
                     <f:content>
                         <List items="{video_blobs>/}">
                             <CustomListItem>

@@ -1,15 +1,15 @@
 sap.ui.define([
 	"./util/BaseController"
-], function(BaseController) {
+], function (BaseController) {
 	"use strict";
 	return BaseController.extend("com.perezjquim.ytc.pwa.controller.CropNDownload", {
 
 		API_BASE_URL: "https://perezjquim-ytc.herokuapp.com",
 
-		onPrepareVideo: async function() {
+		onPrepareVideo: async function () {
 			this.setBusy(true);
 
-			const oWizard = this.byId("ytc-wizard");		
+			const oWizard = this.byId("ytc-wizard");
 
 			const oPromptModel = this.getModel("prompt");
 			const bSplit = oPromptModel.getProperty("/split");
@@ -58,7 +58,7 @@ sap.ui.define([
 				const oBlobModel = this.getModel("video_blobs");
 				var oBlobData = [];
 
-				oResponses.forEach(async function(oResponse) {
+				oResponses.forEach(async function (oResponse) {
 					if (oResponse.ok) {
 						const sFilename = oResponse.headers.get('content-disposition').split('filename=')[1].split(';')[0];
 						const oFileData = await oResponse.blob();
@@ -80,20 +80,20 @@ sap.ui.define([
 						const sErrorMsg = await oResponse.text();
 						console.warn(sErrorMsg);
 						this.toast(sErrorMsg);
-						oWizard.previousStep();	
+						oWizard.previousStep();
 					}
 				}.bind(this));
 
 			} catch (oException) {
 				console.warn(oException);
 				this.toast(oException);
-				oWizard.previousStep();	
+				oWizard.previousStep();
 			}
 
-			this.setBusy(false);			
+			this.setBusy(false);
 		},
 
-		onParamChanged: async function(oEvent) {
+		onParamChanged: async function (oEvent) {
 
 			const oWizard = this.byId("ytc-wizard");
 			oWizard.previousStep();
@@ -111,48 +111,8 @@ sap.ui.define([
 					const oPromptModel = this.getModel("prompt");
 					const sVideoUrl = decodeURIComponent(oPromptModel.getProperty("/url"));
 
-					const oVideoInfoModel = this.getModel("video_info");
-
 					if (sVideoUrl) {
-
-						const oMiscModel = this.getModel("misc");
-						oMiscModel.setProperty("/is_fetching_video_info", true);
-
-						const sTimestamp = new Date().getTime();
-
-						const sVideoInfoUrl = `${this.API_BASE_URL}/get-video-info?url=${sVideoUrl}&=${sTimestamp}`;
-
-						try {
-							const oResponse = await fetch(sVideoInfoUrl);
-
-							if (oResponse.ok) {
-								const oVideoInfo = await oResponse.json();
-								oVideoInfoModel.setData(oVideoInfo);
-
-								if(!oPromptModel.getProperty("/end_time"))
-								{
-									// setting video duration as default end time
-									var sDuration = oVideoInfo.duration;
-									if (sDuration.length > 5) {
-										sDuration = sDuration.substr(sDuration.length - 5);
-									}
-									const oPromptModel = this.getModel("prompt");
-									oPromptModel.setProperty("/end_time", sDuration);
-								}
-							} else {
-								oVideoInfoModel.setData({});
-
-								const sErrorMsg = await oResponse.text();
-								console.warn(sErrorMsg);
-								this.toast(sErrorMsg);		
-							}
-
-						} catch (oException) {
-							console.warn(oException);
-							oVideoInfoModel.setData({});
-						}
-
-						oMiscModel.setProperty("/is_fetching_video_info", false);
+						//noop
 					} else {
 						oVideoInfoModel.setData({});
 					}
@@ -163,7 +123,7 @@ sap.ui.define([
 			}
 		},
 
-		onPressDownload: function(oEvent) {
+		onPressDownload: function (oEvent) {
 
 			const oSource = oEvent.getSource();
 			const oContext = oSource.getBindingContext("video_blobs");
@@ -174,9 +134,24 @@ sap.ui.define([
 			oAnchor.setAttribute('href', sBlobUrl);
 			oAnchor.setAttribute('download', sFilename);
 			oAnchor.click();
+
 		},
 
-		_downloadVideo: async function(sVideoUrl, sStartTime, sEndTime) {
+		prepareIframeContent: function (sVideoUrl) {
+			if (sVideoUrl) {
+				const oUrl = new URL(sVideoUrl);
+				const sVideoId = oUrl.searchParams.get('v');
+				return `<iframe 
+					src='https://www.youtube.com/embed/${sVideoId}'
+					frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					referrerpolicy="strict-origin-when-cross-origin"
+					allowfullscreen
+				/>`;
+			}
+		},
+
+		_downloadVideo: async function (sVideoUrl, sStartTime, sEndTime) {
 
 			const sTimestamp = new Date().getTime();
 
