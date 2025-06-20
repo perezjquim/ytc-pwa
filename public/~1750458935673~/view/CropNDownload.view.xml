@@ -46,7 +46,8 @@
                     visible="{= !!${prompt>/url} }"
                 >
                     <f:content>
-                        <Label text="{i18n>preview}" />
+                        <Label text="{i18n>preview}" 
+                            visible="{= ${prompt>/url}.includes('youtube') || ${prompt>/url}.includes('youtu.be') }" />
                         <core:HTML content="{
                             path: 'prompt>/url',
                             formatter: '.prepareIframeContent'
@@ -79,9 +80,9 @@
                                     regex="[0-9]"
                                 />
                             </rules>
-                        </MaskInput>
-                        <Label text="{i18n>split}" />
-                        <HBox justifyContent="SpaceBetween">
+                        </MaskInput>    
+                        <Label text="{i18n>split}" visible="false"/>
+                        <HBox justifyContent="SpaceBetween" visible="false">
                             <CheckBox
                                 selected="{prompt>/split}"
                                 select="onParamChanged"
@@ -100,7 +101,7 @@
                                     />
                                 </rules>
                             </MaskInput>
-                        </HBox>
+                        </HBox>                                            
                     </f:content>
                 </f:SimpleForm>
             </WizardStep>
@@ -118,6 +119,7 @@
                                     alignItems="Center"
                                 >
                                     <core:HTML
+                                        fieldGroupIds="video_preview_iframes"
                                         content="&lt;video class='z_video_preview' src='{video_blobs>blob_url}' controls /&gt;"
                                     />
                                     <Button

@@ -90,7 +90,7 @@ sap.ui.define([
 				oWizard.previousStep();
 			}
 
-			this.setBusy(false);
+			setTimeout(() => { this.setBusy(false) });
 		},
 
 		onParamChanged: async function (oEvent) {
@@ -141,13 +141,15 @@ sap.ui.define([
 			if (sVideoUrl) {
 				const oUrl = new URL(sVideoUrl);
 				const sVideoId = oUrl.searchParams.get('v');
-				return `<iframe 
-					src='https://www.youtube.com/embed/${sVideoId}'
-					frameborder="0"
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-					referrerpolicy="strict-origin-when-cross-origin"
-					allowfullscreen
-				/>`;
+				if (sVideoUrl.includes("youtube")) {
+					return `<iframe 
+						src='https://www.youtube.com/embed/${sVideoId}'
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerpolicy="strict-origin-when-cross-origin"
+						allowfullscreen
+					/>`;
+				}
 			}
 		},
 
